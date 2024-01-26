@@ -12,8 +12,25 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useRouter } from "next/navigation";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+  {
+    id: 1,
+    name: "Products",
+    route: "/products",
+  },
+  {
+    id: 2,
+    name: "Pricing",
+    route: "/pricing",
+  },
+  {
+    id: 3,
+    name: "Blog",
+    route: "/blog",
+  },
+];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
@@ -23,6 +40,7 @@ const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+  const router = useRouter();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -120,11 +138,13 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.name}
+                onClick={() => {
+                  router.push(page.route);
+                }}
                 sx={{ my: 2, color: "black", display: "block" }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
