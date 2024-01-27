@@ -1,11 +1,12 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
-import ExploreCard, { ExploreCardType } from "./landing/ExploreCard";
+import ExploreCard, { ExploreCardType } from "./ExploreCard";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { Google } from "@mui/icons-material";
+import Section from "./Section";
 
-const Item = styled(Paper)(({ theme }) => ({
+export const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   height: 300,
 
@@ -14,14 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+
 const exploredData: ExploreCardType[] = [
   {
     id: 1,
@@ -55,27 +49,31 @@ const exploredData: ExploreCardType[] = [
 
 const SecondSection = () => {
   return (
-    <Box py={10}>
-      <Typography variant="h4" textAlign={"center"}>
-        Why choose EcoLife?
-      </Typography>
-      <Box py={10}>
-        <Grid container spacing={2}>
-          {exploredData.map(({ id, description, icon, title }) => (
-            <Grid key={id} item xs={12} sm={6} lg={3} xl={3}>
-              <Item elevation={0}>
-                <ExploreCard
-                  id={id}
-                  description={description}
-                  icon={icon}
-                  title={title}
-                />
-              </Item>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </Box>
+    <Section title="Why choose EcoLife?">
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          padding: {
+            xs: 0,
+            lg: 8,
+          },
+        }}
+      >
+        {exploredData.map(({ id, description, icon, title }) => (
+          <Grid key={id} item xs={12} sm={6} lg={3} xl={3}>
+            <Item elevation={0}>
+              <ExploreCard
+                id={id}
+                description={description}
+                icon={icon}
+                title={title}
+              />
+            </Item>
+          </Grid>
+        ))}
+      </Grid>
+    </Section>
   );
 };
 

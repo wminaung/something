@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import LandingImage from "./iamges/LandingImage";
+import LandingImage from "../iamges/LandingImage";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -21,7 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const LandingHolderSection = () => {
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} py={8}>
         <Grid item xs={12} sm={7} lg={8} xl={7}>
           <Item elevation={0}>
             <Box
