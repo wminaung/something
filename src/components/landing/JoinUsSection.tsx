@@ -10,11 +10,11 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import { Button, Input, InputAdornment, Paper, TextField } from "@mui/material";
-import { Email } from "@mui/icons-material";
+import { Email, Image } from "@mui/icons-material";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  height: 400,
+
   backgroundColor: "#D6F7E7",
   padding: theme.spacing(1),
   borderRadius: 15,
@@ -26,7 +26,6 @@ export default function JoinUsSection() {
   return (
     <Box
       sx={{
-        width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-evenly",
@@ -34,22 +33,29 @@ export default function JoinUsSection() {
         pb: 10,
       }}
     >
-      <Item sx={{ display: "flex", p: 10, width: "70%" }}>
-        <Card sx={{ display: "flex", borderRadius: 0 }}>
+      <Item sx={{ display: "flex", p: 10 }}>
+        {" "}
+        <Card
+          sx={{
+            display: "flex",
+            maxWidth: 930,
+            borderRadius: 0,
+            flexDirection: { xs: "column", md: "row" },
+          }}
+        >
           <CardMedia
             component="img"
-            sx={{ maxWidth: 422, maxHeight: 430 }}
             image="/assets/js.png"
             alt="Live from space album cover"
           />
 
           <CardContent
             sx={{
-              width: "100%",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-evenly",
               alignItems: "center",
+              minHeight: 280,
             }}
           >
             <Typography textAlign={"center"} component="div" variant="h5">
@@ -67,7 +73,7 @@ export default function JoinUsSection() {
             </Typography>
             <TextField
               id="outlined-start-adornment"
-              sx={{ m: 1, width: "25ch" }}
+              sx={{ m: 1, width: 300 }}
               placeholder="Email Address"
               InputProps={{
                 startAdornment: (
@@ -86,3 +92,8 @@ export default function JoinUsSection() {
     </Box>
   );
 }
+/*
+ sx={{
+              display: { xs: "none", md: "block" }, // Hide on medium screens
+            }}
+            */

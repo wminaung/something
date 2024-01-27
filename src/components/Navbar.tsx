@@ -58,7 +58,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="fixed" color="default" variant="outlined">
+    <AppBar position="fixed" elevation={0} color="default" variant="outlined">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
