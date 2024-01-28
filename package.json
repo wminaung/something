@@ -13,6 +13,8 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.12",
     "@mui/material": "^5.14.12",
+    "@prisma/client": "^5.4.1",
+    "@vercel/postgres": "^0.7.2",
     "next": "13.5.4",
     "next-auth": "^4.23.2",
     "react": "^18",

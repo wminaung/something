@@ -7,19 +7,21 @@ import Typography from "@mui/material/Typography";
 import { Google } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { CardActions } from "@mui/material";
+import { Avatar, CardActions } from "@mui/material";
 import HoverRating from "./HoverRating";
 
 export interface TestimonialCardType {
   id?: number;
-  icon?: React.ReactNode;
-  title?: string;
-  description?: string;
+  imageUrl: string;
+  rating: number;
+  title: string;
+  description: string;
 }
 export default function TestimonialCard({
-  icon,
+  imageUrl,
   description,
   title,
+  rating,
 }: TestimonialCardType) {
   return (
     <Card
@@ -33,18 +35,22 @@ export default function TestimonialCard({
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-around",
+          justifyContent: "space-evenly",
           alignItems: "center",
           height: "100%",
         }}
       >
-        {icon ? icon : <Google />}
+        <Avatar
+          alt="Remy Sharp"
+          sx={{ width: 90, height: 90 }}
+          src={imageUrl}
+        />
         <Box
           sx={{
-            height: "65%",
+            height: "50%",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
             alignItems: "center",
           }}
         >
@@ -67,7 +73,7 @@ export default function TestimonialCard({
             alignItems: "center",
           }}
         >
-          <HoverRating />
+          <HoverRating rating={rating} />
         </CardActions>
       </CardContent>{" "}
     </Card>
