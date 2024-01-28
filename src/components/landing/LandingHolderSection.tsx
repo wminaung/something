@@ -10,11 +10,10 @@ import { GitHub } from "@mui/icons-material";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  height: 400,
-
+  minHeight: 400,
+  height: 100,
   backgroundColor: "wheat",
   padding: theme.spacing(1),
-
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
@@ -23,15 +22,15 @@ const LandingHolderSection = () => {
     <>
       <Grid container spacing={2} py={8}>
         <Grid item xs={12} sm={7} lg={8} xl={7}>
-          <Item elevation={0}>
+          <Item elevation={0} sx={{ bg: "blue" }}>
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "space-evenly",
                 alignItems: "flex-start",
                 flexDirection: "column",
-                height: "inherit",
-                pl: 8,
+                height: "100%",
+                pl: { xs: 2, sm: 8 },
               }}
             >
               <Box>

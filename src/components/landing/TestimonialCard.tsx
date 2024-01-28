@@ -7,40 +7,28 @@ import Typography from "@mui/material/Typography";
 import { Google } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import { CardActions } from "@mui/material";
+import HoverRating from "./HoverRating";
 
-export interface ExploreCardType {
+export interface TestimonialCardType {
   id?: number;
   icon?: React.ReactNode;
   title?: string;
   description?: string;
 }
-export default function ExploreCard({
+export default function TestimonialCard({
   icon,
   description,
   title,
-}: ExploreCardType) {
-  const titler = () => {
-    if (title) {
-      if (title.length < 21) {
-        const words = title.split(" ");
-        let final = "";
-        words.forEach((w, idx) => {
-          if (idx === 1) {
-            final += `  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ${w}`;
-          } else final += w;
-        });
-
-        return final;
-      }
-
-      return title;
-    } else {
-      return "Diverse Eco-Friendly Products";
-    }
-  };
-  console.log(titler());
+}: TestimonialCardType) {
   return (
-    <Card sx={{ minWidth: 275, height: "inherit" }} elevation={0}>
+    <Card
+      sx={{
+        minWidth: 200,
+        height: "100%",
+      }}
+      elevation={0}
+    >
       <CardContent
         sx={{
           display: "flex",
@@ -51,7 +39,15 @@ export default function ExploreCard({
         }}
       >
         {icon ? icon : <Google />}
-        <Box sx={{ height: "75%" }}>
+        <Box
+          sx={{
+            height: "65%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <Typography variant="h5" color={"#2BAE7A"} py={2} component="div">
             {title ? title : "Diverse Eco-Friendly Products"}
           </Typography>
@@ -59,11 +55,21 @@ export default function ExploreCard({
             {description
               ? description
               : `Explore eco-friendly products, from sustainable fashion to green
-              home essentials, for a variety of environmentally responsible
-              options.`}
-          </Typography>
+            home essentials, for a variety of environmentally responsible
+            options.`}
+          </Typography>{" "}
         </Box>
-      </CardContent>
+        <CardActions
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <HoverRating />
+        </CardActions>
+      </CardContent>{" "}
     </Card>
   );
 }

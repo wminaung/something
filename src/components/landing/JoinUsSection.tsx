@@ -33,7 +33,7 @@ export default function JoinUsSection() {
         pb: 10,
       }}
     >
-      <Item sx={{ display: "flex", p: 10 }}>
+      <Item sx={{ display: "flex", p: 0 }}>
         {" "}
         <Card
           sx={{
@@ -73,7 +73,7 @@ export default function JoinUsSection() {
             </Typography>
             <TextField
               id="outlined-start-adornment"
-              sx={{ m: 1, width: 300 }}
+              sx={{ m: 1, maxWidth: 300 }}
               placeholder="Email Address"
               InputProps={{
                 startAdornment: (

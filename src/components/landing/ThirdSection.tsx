@@ -7,7 +7,7 @@ import FeatureProductCard, {
   FeatureProductCardType,
 } from "./FeatureProductCard";
 
-export const Item = styled(Paper)(({ theme }) => ({
+const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   minHeight: 400,
   //   backgroundColor: "wheat",
@@ -56,7 +56,7 @@ const ThirdSection = () => {
         sx={{
           padding: {
             xs: 0,
-            lg: 8,
+            lg: 2,
           },
         }}
       >

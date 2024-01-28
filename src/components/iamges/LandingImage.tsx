@@ -7,8 +7,9 @@ const LandingImage = () => {
     <Image
       src={LandingPageMainImage}
       alt="Next.js Logo"
-      width={380}
-      height={380}
+      width={300}
+      height={300}
+      style={{ maxWidth: "380px", minHeight: "380px" }}
       priority
     />
   );

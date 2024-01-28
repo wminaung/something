@@ -12,11 +12,11 @@ interface SectionType {
 
 const Section = ({ children, title }: SectionType) => {
   return (
-    <Box py={2}>
+    <Box py={1} sx={{ zIndex: 999, position: "relative" }}>
       <Typography variant="h4" textAlign={"center"}>
         {title}
       </Typography>
-      <Box py={10}>{children}</Box>
+      <Box py={8}>{children}</Box>
     </Box>
   );
 };

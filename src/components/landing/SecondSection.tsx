@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 import { Google } from "@mui/icons-material";
 import Section from "./Section";
 
-export const Item = styled(Paper)(({ theme }) => ({
+const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   height: 300,
 
