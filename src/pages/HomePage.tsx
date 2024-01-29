@@ -12,6 +12,7 @@ import ExploreMoreDivider from "@/components/landing/ExploreMoreDivider";
 import CustomerTestimonialsSection from "@/components/landing/CustomerTestimonialsSection";
 import Image from "next/image";
 import AnimatedComponent from "@/test/AnimatedComponent";
+import OurblogsSection from "@/components/landing/OurblogsSection";
 
 const HomePage = () => {
   return (
@@ -24,6 +25,7 @@ const HomePage = () => {
       <ThirdSection />
       <ExploreMoreDivider />
       <CustomerTestimonialsSection />
+      <OurblogsSection />
       <JoinUsSection />
       <Footer />
     </Box>
