@@ -30,16 +30,16 @@ export default function JoinUsSection() {
         flexDirection: "column",
         justifyContent: "space-evenly",
         alignItems: "center",
-        pb: 10,
+        py: 10,
       }}
     >
-      <Item sx={{ display: "flex", p: 0 }}>
-        {" "}
+      <Item sx={{ display: "flex", p: 10 }} elevation={0}>
         <Card
           sx={{
             display: "flex",
             maxWidth: 930,
             borderRadius: 0,
+
             flexDirection: { xs: "column", md: "row" },
           }}
         >

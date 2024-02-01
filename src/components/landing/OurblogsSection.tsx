@@ -44,7 +44,7 @@ const ourBlogsCardData = [
 ];
 const OurblogsSection = () => {
   return (
-    <Section title="Our blogs">
+    <Section title="Our blogs" sx={{ bgcolor: "#D6F7E7", pt: 5 }}>
       <Grid
         container
         spacing={3}

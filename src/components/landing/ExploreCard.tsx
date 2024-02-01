@@ -51,11 +51,23 @@ export default function ExploreCard({
         }}
       >
         {icon ? icon : <Google />}
-        <Box sx={{ height: "75%" }}>
+        <Box
+          sx={{
+            height: "75%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
           <Typography variant="h5" color={"#2BAE7A"} py={2} component="div">
             {title ? title : "Diverse Eco-Friendly Products"}
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <Typography
+            sx={{ mb: 1.5 }}
+            textAlign={"center"}
+            color="text.secondary"
+          >
             {description
               ? description
               : `Explore eco-friendly products, from sustainable fashion to green

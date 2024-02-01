@@ -12,7 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   minHeight: 400,
   height: 100,
-  backgroundColor: "wheat",
+  // backgroundColor: "wheat",
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
@@ -22,7 +22,7 @@ const LandingHolderSection = () => {
     <>
       <Grid container spacing={2} py={8}>
         <Grid item xs={12} sm={7} lg={8} xl={7}>
-          <Item elevation={0} sx={{ bg: "blue" }}>
+          <Item elevation={0}>
             <Box
               sx={{
                 display: "flex",

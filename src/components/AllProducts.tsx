@@ -6,46 +6,34 @@ import GridLayout, { GridItemType } from "./GridLayout";
 const gridItems: GridItemType[] = [
   {
     id: 1,
-    gridProps: { xs: 12, sm: 4, lg: 3, xl: 2 },
     node: <Box>Hello</Box>,
-    itemsProps: { elevation: 3 },
-    sx: { height: 300 },
   },
   {
     id: 2,
-    gridProps: { xs: 12, sm: 4, lg: 3, xl: 2 },
     node: <Box>Hello</Box>,
-    itemsProps: { elevation: 3 },
   },
   {
     id: 3,
-    gridProps: { xs: 12, sm: 4, lg: 3, xl: 2 },
     node: <Box>Hello</Box>,
-    itemsProps: { elevation: 3 },
   },
   {
     id: 4,
-    gridProps: { xs: 12, sm: 4, lg: 3, xl: 2 },
     node: <Box>Hello</Box>,
-    itemsProps: { elevation: 3 },
   },
   {
     id: 5,
-    gridProps: { xs: 12, sm: 4, lg: 3, xl: 2 },
     node: <Box>Hello</Box>,
-    itemsProps: { elevation: 3 },
-  },
-  {
-    id: 6,
-    gridProps: { xs: 12, sm: 4, lg: 3, xl: 2 },
-    node: <Box>Hello</Box>,
-    itemsProps: { elevation: 3 },
   },
 ];
 const AllProducts = () => {
   return (
     <>
-      <GridLayout gridItems={gridItems}></GridLayout>
+      <GridLayout
+        gridItems={gridItems}
+        gridProps={{ xs: 12, sm: 4, lg: 3, xl: 2 }}
+        itemsProps={{ elevation: 3 }}
+        sx={{ height: 200 }}
+      />
     </>
   );
 };

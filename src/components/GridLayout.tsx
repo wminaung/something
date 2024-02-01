@@ -19,27 +19,29 @@ const Item = styled(Paper)<ItemProps>(({ theme }) => ({
 export interface GridItemType {
   node: React.ReactNode;
   id: number;
-  gridProps?: GridProps;
-  itemsProps?: PaperProps;
-  sx?: SxProps<Theme>;
 }
 
 interface GridLayoutType {
   gridItems: GridItemType[];
+  gridProps?: GridProps;
+  itemsProps?: PaperProps;
+  sx?: SxProps<Theme>;
+  itemSx?: SxProps<Theme>;
 }
 
-const GridLayout = ({ gridItems }: GridLayoutType) => {
+const GridLayout = ({
+  gridItems,
+  sx = {},
+  itemSx = {},
+  gridProps = {},
+  itemsProps = {},
+}: GridLayoutType) => {
   return (
     <>
-      <Grid container spacing={2}>
-        {}
+      <Grid container spacing={2} sx={sx}>
         {gridItems.map((gridItem) => (
-          <Grid key={gridItem.id} item {...gridItem.gridProps}>
-            <Item
-              elevation={0}
-              sx={{ ...gridItem.sx }}
-              {...gridItem.itemsProps}
-            >
+          <Grid key={gridItem.id} item {...gridProps}>
+            <Item elevation={0} sx={itemSx} {...itemsProps}>
               {gridItem.node}
             </Item>
           </Grid>

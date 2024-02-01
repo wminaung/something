@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Google } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { Avatar, CardActions, CardMedia } from "@mui/material";
+import { Avatar, Button, CardActions, CardMedia } from "@mui/material";
 import HoverRating from "./HoverRating";
 
 export interface OurBlogCardType {
@@ -25,22 +25,28 @@ export default function OurBlogCard({
     <Card
       sx={{
         minWidth: 200,
-        pt: 2,
+        pt: 4,
         height: "100%",
-        bgcolor: "wheat",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
       elevation={0}
     >
-      <Box sx={{ bgcolor: "gray", width: "100%" }}>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <CardMedia
           title="Remy Sharp"
           sx={{
             borderRadius: 1,
-            width: "100%",
-            height: "300px",
+            width: "80%",
+            minHeight: "120px",
           }}
           image={imageUrl}
         />
@@ -73,6 +79,18 @@ export default function OurBlogCard({
             </Typography>
           </Box>
         </CardContent>
+        <CardActions>
+          <Button
+            sx={{
+              bgcolor: "#2BAE7A",
+              ":hover": { bgcolor: "white", color: "#2BAE7A" },
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            READ MORE
+          </Button>
+        </CardActions>
       </Box>
     </Card>
   );
