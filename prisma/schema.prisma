@@ -16,3 +16,10 @@ model User {
   email String  @unique
   name  String?
 }
+
+model ProductAsset {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  url         String
+  description String? @default("ecolife desc")
+}

@@ -7,30 +7,39 @@ import Typography from "@mui/material/Typography";
 import { Google } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import { Button, CardActions, CardMedia } from "@mui/material";
 
-export interface ExploreCardType {
-  id?: number;
-  icon?: React.ReactNode;
-  title?: string;
+export interface ProductCardType {
+  imageUrl: string;
+  title: string;
   description?: string;
 }
-export default function ExploreCard({
-  icon,
-  description,
+
+export interface ProductCardType {
+  imageUrl: string;
+  title: string;
+  description?: string;
+}
+export default function ProductCard({
+  imageUrl,
   title,
-}: ExploreCardType) {
+  description,
+}: ProductCardType) {
   return (
-    <Card sx={{ minWidth: 275, height: "inherit" }} elevation={0}>
+    <Card sx={{ height: "inherit", border: "1px solid #2BAE7A" }} elevation={1}>
       <CardContent
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-around",
           alignItems: "center",
-          height: "100%",
         }}
       >
-        {icon ? icon : <Google />}
+        <CardMedia
+          sx={{ width: "100%", height: 140 }}
+          image={imageUrl}
+          title={title}
+        />
         <Box
           sx={{
             height: "75%",
@@ -41,21 +50,20 @@ export default function ExploreCard({
           }}
         >
           <Typography variant="h5" color={"#2BAE7A"} py={2} component="div">
-            {title ? title : "Diverse Eco-Friendly Products"}
+            {title}
           </Typography>
           <Typography
             sx={{ mb: 1.5 }}
             textAlign={"center"}
             color="text.secondary"
           >
-            {description
-              ? description
-              : `Explore eco-friendly products, from sustainable fashion to green
-              home essentials, for a variety of environmentally responsible
-              options.`}
+            {description}
           </Typography>
         </Box>
       </CardContent>
+      <CardActions>
+        <Button variant="outlined">Hello</Button>
+      </CardActions>
     </Card>
   );
 }

@@ -9,8 +9,7 @@ export interface ItemProps extends PaperProps {
 }
 const Item = styled(Paper)<ItemProps>(({ theme }) => ({
   ...theme.typography.body2,
-  height: 400,
-  backgroundColor: "wheat",
+
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,

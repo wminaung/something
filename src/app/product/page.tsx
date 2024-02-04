@@ -1,6 +1,6 @@
 import ProductsPage from "@/pages/ProductsPage";
 
-const Products_Page = () => {
+const Product_Page = () => {
   return (
     <>
       <ProductsPage />
@@ -8,4 +8,4 @@ const Products_Page = () => {
   );
 };
 
-export default Products_Page;
+export default Product_Page;
