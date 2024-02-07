@@ -8,23 +8,21 @@ import { Google } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { Button, CardActions, CardMedia } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { Prisma, ProductAsset } from "../../../prisma/generated/client";
 
 export interface ProductCardType {
-  imageUrl: string;
-  title: string;
-  description?: string;
-}
-
-export interface ProductCardType {
-  imageUrl: string;
-  title: string;
-  description?: string;
+  productAsset: ProductAsset;
 }
 export default function ProductCard({
-  imageUrl,
-  title,
-  description,
+  productAsset: { name, url, id, description },
 }: ProductCardType) {
+  const router = useRouter();
+
+  const handleDetails = () => {
+    router.push(`/product/${id}`);
+  };
+
   return (
     <Card sx={{ height: "inherit", border: "1px solid #2BAE7A" }} elevation={1}>
       <CardContent
@@ -37,8 +35,8 @@ export default function ProductCard({
       >
         <CardMedia
           sx={{ width: "100%", height: 140 }}
-          image={imageUrl}
-          title={title}
+          image={url}
+          title={name}
         />
         <Box
           sx={{
@@ -50,7 +48,7 @@ export default function ProductCard({
           }}
         >
           <Typography variant="h5" color={"#2BAE7A"} py={2} component="div">
-            {title}
+            {name}
           </Typography>
           <Typography
             sx={{ mb: 1.5 }}
@@ -61,8 +59,17 @@ export default function ProductCard({
           </Typography>
         </Box>
       </CardContent>
-      <CardActions>
-        <Button variant="outlined">Hello</Button>
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Button variant="text" onClick={() => handleDetails()}>
+          details
+        </Button>
+        <Button variant="outlined">Add to Cart</Button>
       </CardActions>
     </Card>
   );

@@ -48,13 +48,7 @@ const AllProducts = () => {
   const createGridItems = (productAssets: ProductAsset[]): GridItemType[] => {
     return productAssets.map((pa) => ({
       id: pa.id,
-      node: (
-        <ProductCard
-          title={pa.name}
-          imageUrl={pa.url}
-          description={pa.description ? pa.description : "hello"}
-        />
-      ),
+      node: <ProductCard productAsset={pa} />,
     }));
   };
 

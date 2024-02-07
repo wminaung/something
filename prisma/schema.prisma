@@ -4,22 +4,41 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+//  directUrl = env("POSTGRES_URL_NON_POOLING")
+
+//////////////////////////////////////////////////////////
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id String @id @unique @default(uuid())
+
+  email   String  @unique
+  name    String?
+  isAdmin Boolean @default(false)
+
+  Products Product[]
 }
 
 model ProductAsset {
-  id          Int     @id @default(autoincrement())
+  id String @id @unique @default(uuid())
+
+  productId String @unique
+  url       String
+
+  Product Product @relation(fields: [productId], references: [id])
+}
+
+model Product {
+  id String @id @unique @default(uuid())
+
+  userId      String
   name        String  @unique
-  url         String
   description String? @default("ecolife desc")
+
+  ProductAsset ProductAsset?
+
+  User User @relation(fields: [userId], references: [id])
 }

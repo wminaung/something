@@ -12,7 +12,9 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { Shop, ShoppingCart } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
+import { Badge } from "@mui/material";
 
 const pages = [
   {
@@ -154,7 +156,20 @@ const Navbar = () => {
               </Button>
             ))}
           </Box>
-
+          <Box sx={{ mr: 3 }}>
+            <Tooltip title="Add to Cart">
+              <Badge
+                onClick={() => {
+                  console.log("Hello");
+                }}
+                component={IconButton}
+                badgeContent={0}
+                color="secondary"
+              >
+                <ShoppingCart fontSize="medium" />
+              </Badge>
+            </Tooltip>
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

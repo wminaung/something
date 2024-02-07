@@ -1,9 +1,9 @@
-import ProductsPage from "@/pages/ProductsPage";
+import ProductPage from "@/pages/ProductPage";
 
 const Product_Page = () => {
   return (
     <>
-      <ProductsPage />
+      <ProductPage />
     </>
   );
 };
