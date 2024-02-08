@@ -10,9 +10,11 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/inter": "^5.0.16",
     "@mui/icons-material": "^5.14.12",
+    "@mui/joy": "^5.0.0-beta.26",
     "@mui/material": "^5.14.12",
     "@prisma/client": "^5.4.1",
     "@types/multer": "^1.4.11",
@@ -24,6 +26,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-intersection-observer": "^9.5.3",
+    "react-markdown": "^9.0.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
