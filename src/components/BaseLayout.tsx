@@ -3,11 +3,13 @@
 import { Box } from "@mui/material";
 import Navbar from "./Navbar";
 import { usePathname, useRouter } from "next/navigation";
-
+import { Session } from "next-auth";
+import { SessionProvider, useSession } from "next-auth/react";
 const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
-  console.log(pathName);
 
+  const session = useSession();
+  console.log({ session: session.data });
   const isAuthRoute: boolean =
     pathName !== "/login" && pathName !== "/register";
 

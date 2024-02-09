@@ -15,9 +15,10 @@ datasource db {
 model User {
   id String @id @unique @default(uuid())
 
-  email   String  @unique
-  name    String?
-  isAdmin Boolean @default(false)
+  email    String  @unique
+  name     String?
+  password String?
+  isAdmin  Boolean @default(false)
 
   Products Product[]
 }

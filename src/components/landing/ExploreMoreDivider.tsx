@@ -9,7 +9,6 @@ const ExploreMoreDivider = () => {
     triggerOnce: true,
     threshold: 0.5, // Adjust this threshold based on your needs
   });
-  console.log({ inView });
 
   return (
     <Box
