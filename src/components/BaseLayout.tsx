@@ -9,7 +9,7 @@ const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
 
   const session = useSession();
-
+  console.log(session);
   const isAuthRoute: boolean = pathName !== "/signin" && pathName !== "/signup";
 
   return (

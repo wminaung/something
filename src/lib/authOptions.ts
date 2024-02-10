@@ -4,6 +4,7 @@ import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { Auth } from "./types";
 import { prisma } from "./db";
+import { googleCallbackMiddleware } from "./utils";
 
 export const authOptions: AuthOptions = {
   session: {
@@ -35,6 +36,7 @@ export const authOptions: AuthOptions = {
         if (!credentials) {
           return null;
         }
+        console.log({ credentials });
         const { auth, email, name, password } = credentials;
 
         if (!auth || !email) {
@@ -68,7 +70,15 @@ export const authOptions: AuthOptions = {
     signIn: "/signin",
     signOut: "/signup",
   },
-  callbacks: {},
+  callbacks: {
+    async session({ session, token, trigger, user, newSession }) {
+      console.log("sssss");
+
+      await googleCallbackMiddleware(session);
+
+      return session;
+    },
+  },
 
   secret: "apple",
 };
