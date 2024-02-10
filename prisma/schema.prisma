@@ -13,7 +13,7 @@ datasource db {
 //////////////////////////////////////////////////////////
 
 model User {
-  id String @id @unique @default(uuid())
+  id String @id @default(uuid())
 
   email    String  @unique
   name     String?
@@ -24,7 +24,7 @@ model User {
 }
 
 model ProductAsset {
-  id String @id @unique @default(uuid())
+  id String @id @default(uuid())
 
   productId String @unique
   url       String
@@ -33,7 +33,7 @@ model ProductAsset {
 }
 
 model Product {
-  id String @id @unique @default(uuid())
+  id String @id @default(uuid())
 
   userId      String
   name        String  @unique

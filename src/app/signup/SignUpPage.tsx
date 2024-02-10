@@ -18,15 +18,17 @@ import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import BadgeRoundedIcon from "@mui/icons-material/BadgeRounded";
 import GoogleIcon from "../../components/GoogleIcon";
-import { getSession, signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { Auth } from "@/lib/types";
 
 interface FormElements extends HTMLFormControlsCollection {
+  name: HTMLInputElement;
   email: HTMLInputElement;
   password: HTMLInputElement;
   persistent: HTMLInputElement;
+  auth: Auth;
 }
-interface SignInFormElement extends HTMLFormElement {
+interface SignUpFormElement extends HTMLFormElement {
   readonly elements: FormElements;
 }
 
@@ -37,7 +39,6 @@ function ColorSchemeToggle(props: IconButtonProps) {
   React.useEffect(() => {
     setMounted(true);
   }, []);
-
   if (!mounted) {
     return <IconButton size="sm" variant="outlined" color="neutral" disabled />;
   }
@@ -63,22 +64,19 @@ function ColorSchemeToggle(props: IconButtonProps) {
   );
 }
 
-export default function LoginPage() {
-  const session = useSession();
-
-  const handleGoogleSignIn = async () => {
-    signIn("google");
-  };
-
-  const handleSubmit = async (event: React.FormEvent<SignInFormElement>) => {
+export default function SignUpPage() {
+  const handleRegister = async (event: React.FormEvent<SignUpFormElement>) => {
     event.preventDefault();
     const formElements = event.currentTarget.elements;
     const data = {
+      name: formElements.name.value,
       email: formElements.email.value,
       password: formElements.password.value,
       persistent: formElements.persistent.checked,
-      atuh: Auth.SIGNIN,
+      auth: Auth.SIGN_UP,
     };
+
+    //signInButRegister
     signIn("credentials", data);
   };
 
@@ -165,11 +163,11 @@ export default function LoginPage() {
           >
             <Stack gap={4} sx={{ mb: 2 }}>
               <Stack gap={1}>
-                <Typography level="h3">Sign in</Typography>
+                <Typography level="h3">Sign up</Typography>
                 <Typography level="body-sm">
                   New to company?{" "}
-                  <Link href="/register" level="title-sm">
-                    Sign up
+                  <Link href="/signin" level="title-sm">
+                    Sign in!
                   </Link>
                 </Typography>
               </Stack>
@@ -178,7 +176,6 @@ export default function LoginPage() {
                 color="neutral"
                 fullWidth
                 startDecorator={<GoogleIcon />}
-                onClick={handleGoogleSignIn}
               >
                 Continue with Google
               </Button>
@@ -197,7 +194,11 @@ export default function LoginPage() {
               or
             </Divider>
             <Stack gap={4} sx={{ mt: 2 }}>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleRegister}>
+                <FormControl required>
+                  <FormLabel>Username</FormLabel>
+                  <Input type="text" name="name" />
+                </FormControl>
                 <FormControl required>
                   <FormLabel>Email</FormLabel>
                   <Input type="email" name="email" />
@@ -220,7 +221,7 @@ export default function LoginPage() {
                     </Link>
                   </Box>
                   <Button type="submit" fullWidth>
-                    Sign in
+                    Sign up
                   </Button>
                 </Stack>
               </form>

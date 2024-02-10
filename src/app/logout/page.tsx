@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const LogoutPage = () => {
   const { data } = useSession();
   useEffect(() => {
-    data && signOut({ callbackUrl: "/login", redirect: true });
+    data && signOut({ callbackUrl: "/signin", redirect: true });
   }, [data]);
 
   return <>LogoutPage</>;

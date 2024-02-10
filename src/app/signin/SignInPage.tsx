@@ -18,11 +18,14 @@ import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import BadgeRoundedIcon from "@mui/icons-material/BadgeRounded";
 import GoogleIcon from "../../components/GoogleIcon";
+import { getSession, signIn, useSession } from "next-auth/react";
+import { Auth } from "@/lib/types";
 
 interface FormElements extends HTMLFormControlsCollection {
   email: HTMLInputElement;
   password: HTMLInputElement;
   persistent: HTMLInputElement;
+  auth: Auth;
 }
 interface SignInFormElement extends HTMLFormElement {
   readonly elements: FormElements;
@@ -35,6 +38,7 @@ function ColorSchemeToggle(props: IconButtonProps) {
   React.useEffect(() => {
     setMounted(true);
   }, []);
+
   if (!mounted) {
     return <IconButton size="sm" variant="outlined" color="neutral" disabled />;
   }
@@ -60,7 +64,25 @@ function ColorSchemeToggle(props: IconButtonProps) {
   );
 }
 
-export default function JoySignInSideTemplate() {
+export default function SignInPage() {
+  const session = useSession();
+
+  const handleGoogleSignIn = async () => {
+    await signIn("google");
+  };
+
+  const handleSubmit = async (event: React.FormEvent<SignInFormElement>) => {
+    event.preventDefault();
+    const formElements = event.currentTarget.elements;
+    const data = {
+      email: formElements.email.value,
+      password: formElements.password.value,
+      persistent: formElements.persistent.checked,
+      auth: Auth.SIGN_IN,
+    };
+    await signIn("credentials", data);
+  };
+
   return (
     <CssVarsProvider defaultMode="dark" disableTransitionOnChange>
       <CssBaseline />
@@ -144,11 +166,11 @@ export default function JoySignInSideTemplate() {
           >
             <Stack gap={4} sx={{ mb: 2 }}>
               <Stack gap={1}>
-                <Typography level="h3">Sign up</Typography>
+                <Typography level="h3">Sign in</Typography>
                 <Typography level="body-sm">
                   New to company?{" "}
-                  <Link href="/login" level="title-sm">
-                    Sign in!
+                  <Link href="/signup" level="title-sm">
+                    Sign up
                   </Link>
                 </Typography>
               </Stack>
@@ -157,6 +179,7 @@ export default function JoySignInSideTemplate() {
                 color="neutral"
                 fullWidth
                 startDecorator={<GoogleIcon />}
+                onClick={handleGoogleSignIn}
               >
                 Continue with Google
               </Button>
@@ -175,18 +198,7 @@ export default function JoySignInSideTemplate() {
               or
             </Divider>
             <Stack gap={4} sx={{ mt: 2 }}>
-              <form
-                onSubmit={(event: React.FormEvent<SignInFormElement>) => {
-                  event.preventDefault();
-                  const formElements = event.currentTarget.elements;
-                  const data = {
-                    email: formElements.email.value,
-                    password: formElements.password.value,
-                    persistent: formElements.persistent.checked,
-                  };
-                  alert(JSON.stringify(data, null, 2));
-                }}
-              >
+              <form onSubmit={handleSubmit}>
                 <FormControl required>
                   <FormLabel>Email</FormLabel>
                   <Input type="email" name="email" />
@@ -209,7 +221,7 @@ export default function JoySignInSideTemplate() {
                     </Link>
                   </Box>
                   <Button type="submit" fullWidth>
-                    Sign up
+                    Sign in
                   </Button>
                 </Stack>
               </form>
