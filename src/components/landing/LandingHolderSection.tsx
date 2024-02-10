@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import LandingImage from "../iamges/LandingImage";
+import LandingImage from "../images/LandingImage";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";

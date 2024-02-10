@@ -80,6 +80,10 @@ export default function SignUpPage() {
     signIn("credentials", data);
   };
 
+  const handleGoogleSignUp = async () => {
+    await signIn("google", { callbackUrl: "/", redirect: true });
+  };
+
   return (
     <CssVarsProvider defaultMode="dark" disableTransitionOnChange>
       <CssBaseline />
@@ -176,6 +180,7 @@ export default function SignUpPage() {
                 color="neutral"
                 fullWidth
                 startDecorator={<GoogleIcon />}
+                onClick={handleGoogleSignUp}
               >
                 Continue with Google
               </Button>
